@@ -8,14 +8,14 @@ if(ENVIRONMENT == 'production')
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
-	$db['default']['database'] = 'mydb';
+	$db['default']['database'] = 'redbelt';
 }
 else
 {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
-	$db['default']['database'] = 'mydb';
+	$db['default']['database'] = 'redbelt';
 }
 
 $db['default']['dbdriver'] = 'mysql';

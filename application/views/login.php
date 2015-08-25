@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Sign In</title>
+	<title>Welcome</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -19,21 +19,21 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <span class="navbar-brand">SS|DB</span>
+        <span class="navbar-brand">Welcome!</span>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/main"><span class="glyphicon glyphicon-home"> Home</a></li>
+          <li></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/signin">Sign in</a></li>
+          <li></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container -->
   </nav>
   <div class="main-container">
     <div class="container">
-      <?php
+      <?php 
       if ($this->session->userdata('success'))
       {
         ?>
@@ -48,13 +48,13 @@
         </div>
         <?php
         $this->session->unset_userdata('success');
-      } 
+      }
       if ($this->session->userdata('errors'))
       {
         ?>
         <div class="alert alert-danger">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <strong>Uh-oh!</strong>
+          <strong>Error!</strong>
           <?php 
           foreach($this->session->userdata('errors') as $error){
             echo $error;
@@ -67,20 +67,51 @@
       ?>
     </div>
     <div class="container">
-      <form class="form-horizontal" roll='form' action='/users/signin_action' method='post'>
-        <div class="form-group">
-          <label>Email Address: </label>
-          <input type="email" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-          <label>Password: </label>
-          <input type="password" class="form-control" name="password" required>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-lg btn-primary">Sign In</button>
-        </div>
-      </form>
-      <a href="/users/register">Don't have an account? Register</a>
+      <div class="col-md-6">
+        <h3>Register</h3>
+        <form class='form-horizontal' roll='form' action='/users/register_action' method='post'>
+          <div class="form-group">
+            <label>Name: </label>
+            <input type="text" class="form-control" name="name" required>
+          </div>
+          <div class="form-group">
+            <label>Alias: </label>
+            <input type="text" class="form-control" name="alias" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address: </label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="form-group">
+            <label>Password: </label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <p>*Password should be at least 8 characters.</p>
+          <div class="form-group">
+            <label>Password Confirmation: </label>
+            <input type="password" class="form-control" name="passwordconf" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3>Login</h3>
+        <form class="form-horizontal" roll='form' action='/users/signin_action' method='post'>
+          <div class="form-group">
+            <label>Email Address: </label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="form-group">
+            <label>Password: </label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary">Sign In</button>
+          </div>
+        </form>
+      </div>
     </div> <!-- /container -->
   </div>
 </body>

@@ -36,3 +36,10 @@
 	width: 99%;
 	margin-right: 0;
 }
+
+#scrollbox {
+	border: 1px solid black;
+	width: 450px;
+	height: 300px;
+	overflow: scroll;
+}

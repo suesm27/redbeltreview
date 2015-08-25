@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Register</title>
+	<title>Add Book and Review</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -19,14 +19,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <span class="navbar-brand">SS|DB</span>
+        <span class="navbar-brand"></span>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/main"><span class="glyphicon glyphicon-home"> Home</a></li>
+          <li></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/users/signin">Sign in</a></li>
+          <li><a href="/main">Home</a></li>
+          <li><a href="/users/logout">Logout</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container -->
@@ -67,33 +68,54 @@
       ?>
     </div>
     <div class="container">
-      <h3>Register</h3>
-      <form class='form-horizontal' roll='form' action='/users/register_action' method='post'>
-        <div class="form-group">
-          <label>Email Address: </label>
-          <input type="email" class="form-control" name="email" required>
-        </div>
-        <div class="form-group">
-          <label>First Name: </label>
-          <input type="text" class="form-control" name="first_name" required>
-        </div>
-        <div class="form-group">
-          <label>Last Name: </label>
-          <input type="text" class="form-control" name="last_name" required>
-        </div>
-        <div class="form-group">
-          <label>Password: </label>
-          <input type="password" class="form-control" name="password" required>
-        </div>
-        <div class="form-group">
-          <label>Password Confirmation: </label>
-          <input type="password" class="form-control" name="passwordconf" required>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-lg btn-primary">Register</button>
-        </div>
-      </form>
-      <a href='/users/signin'>Already have an account? Login</a>
+      <div class="row">
+        <h3><?php echo $book['title']; ?></h3>
+        <h4><?php echo $book['author_name']; ?></h4>
+      </div>
+      <div class="col-md-6">
+        <h3>Reviews:</h3>
+        <?php 
+        foreach($reviews as $review){
+          echo "<p>Rating: ";
+          for ($i = 0; $i < $review['rating']; $i++)
+                         {
+                             echo "<img src='/assets/star.png' height='25' width='25'>";
+                         }
+                         $star = 5 - $review['rating'];
+                         for ($i = 0; $i < $star; $i++)
+                         {
+                             echo "<img src='/assets/blank.png' height='25' width='25'>";
+                         }
+           echo "</p>";
+          echo "<p><a href='/main/show_user/" . $review['user_id'] . "'>" . $review['name'] . "</a> says: ";
+          echo $review['review'] . "</p>";
+          echo "<p>Posted on: " . $review['created_at'] . "</p>";
+        }
+         ?>
+      </div>
+      <div class="col-md-6">
+        <h3>Add a review:</h3>
+          <form class='form-horizontal' roll='form' action='/main/add_review_to_book/<?php echo $book['id']; ?>' method='post'>
+          <div class="form-group">
+            <label>Review: </label>
+            <textarea class="form-control" rows="5" name="review"></textarea>
+          </div>
+          <div class="form-group">
+              <label>Rating: </label>
+              <select class="form-control" name="rating" value="" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select> stars.
+            </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-primary">Submit Review</button>
+          </div>
+        </form>
+       </div>
+      </div>
     </div> <!-- /container -->
   </div>
 </body>
