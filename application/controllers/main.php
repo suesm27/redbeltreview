@@ -36,7 +36,11 @@ class Main extends CI_Controller {
 		$book_id = $this->Book->add_book($book_title, $author_id);
 		$this->Review->add_review($this->input->post('review'), $this->input->post('rating'), $book_id, $this->session->userdata('current_user_id'));
 		redirect('/main');
+	}
 
+	public function delete_review($id, $book_id){
+		$this->Review->delete_review($id);
+		redirect("/main/show_book/$book_id");
 	}
 
 	public function add_review_to_book($book_id){

@@ -28,11 +28,11 @@ class Book extends CI_Model{
 	}
 
 	function get_all_reviews_by_book_id($book_id){
-		return $this->db->query("SELECT *  FROM books JOIN reviews on books.id = reviews.book_id JOIN users on reviews.user_id = users.id WHERE books.id = ?", array($book_id))->result_array();
+		return $this->db->query("SELECT reviews.id as review_id, books.title, books.author_id, reviews.review, reviews.rating, reviews.created_at, books.id as book_id, users.id as user_id, users.name, users.alias, users.email FROM books JOIN reviews on books.id = reviews.book_id JOIN users on reviews.user_id = users.id WHERE books.id = ?", array($book_id))->result_array();
 	}
 
 	function get_all_books_by_user_id($user_id){
-		return $this->db->query("SELECT * FROM books JOIN reviews on books.id = reviews.book_id where reviews.user_id = ?", array($user_id))->result_array();
+		return $this->db->query("SELECT * FROM books JOIN reviews on books.id = reviews.book_id where reviews.user_id = ? group by books.id", array($user_id))->result_array();
 	}
 }
 ?>

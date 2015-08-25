@@ -10,8 +10,9 @@ class Review extends CI_Model{
 		return $this->db->query($query, $values);
 	}
 
-	function delete_review(){
-
+	function delete_review($id){
+		$query = "DELETE FROM reviews WHERE id = ?";
+		return $this->db->query($query, array($id));
 	}
 
 	function get_review_count_by_user_id($user_id){
