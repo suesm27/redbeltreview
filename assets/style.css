@@ -1,0 +1,38 @@
+.main-container {
+	margin-top: 70px;
+}
+
+.form-horizontal, .alert{
+	max-width: 300px;
+	margin-left: 15px;
+}
+
+.jumbotron {
+	background-image: url('/assets/background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	background-position: 0% 50%;
+}
+
+#post_button {
+      float: right;
+      margin-top: 10px;
+}
+
+#comment_button {
+	float: right;
+}
+
+.panel-default {
+	margin: 5px auto;
+}
+
+.container-post {
+    margin: 20px auto;
+}
+
+.container-comment {
+	width: 99%;
+	margin-right: 0;
+}
