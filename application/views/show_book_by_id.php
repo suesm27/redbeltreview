@@ -87,7 +87,7 @@
           echo "</p>";
           echo "<p><a href='/main/show_user/" . $review['user_id'] . "'>" . $review['name'] . "</a> says: ";
           echo $review['review'] . "</p>";
-          echo "<p>Posted on: " . $review['created_at'] . "</p>";
+          echo "<p>Posted on: " . date('M jS, Y @ h:iA', strtotime($review['created_at'])) . "</p>";
           if($this->session->userdata('current_user_id') == $review['user_id']){
             echo "<p><a href='/main/delete_review/{$review['review_id']}/{$book['id']}'>" . "Delete this Review" . "</a></p>";  
           }

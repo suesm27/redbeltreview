@@ -16,7 +16,7 @@ class Review extends CI_Model{
 	}
 
 	function get_review_count_by_user_id($user_id){
-		$query = "select COUNT(reviews.id) as numReviews from reviews where user_id = 3";
+		$query = "select COUNT(reviews.id) as numReviews from reviews where user_id = {$user_id}";
 		$result = $this->db->query($query, array($user_id))->row_array();
 		return $result['numReviews'];
 	}
