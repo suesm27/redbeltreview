@@ -28,7 +28,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/main">Home</a></li>
           <li><a href="/main/add">Add Book and Review</a></li>
-          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/users/logoff">Logout</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container -->
@@ -36,35 +36,33 @@
   <div class="main-container">
     <div class="container">
       <?php 
-      if ($this->session->userdata('success'))
+      if ($this->session->flashdata('success'))
       {
         ?>
         <div class="alert alert-success">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Nice!</strong>
           <?php 
-          foreach($this->session->userdata('success') as $s){
+          foreach($this->session->flashdata('success') as $s){
             echo $s;
           }
           ?>
         </div>
         <?php
-        $this->session->unset_userdata('success');
       }
-      if ($this->session->userdata('errors'))
+      if ($this->session->flashdata('errors'))
       {
         ?>
         <div class="alert alert-danger">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Error!</strong>
           <?php 
-          foreach($this->session->userdata('errors') as $error){
+          foreach($this->session->flashdata('errors') as $error){
             echo $error;
           }
           ?>
         </div>
         <?php
-        $this->session->unset_userdata('errors');
       }
       ?>
     </div>

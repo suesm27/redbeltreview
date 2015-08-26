@@ -10,8 +10,13 @@ class User extends CI_Model{
 		$email = $post['email'];
 		$password = $post['password'];
 		$time = $this->db->query("SELECT created_at FROM users WHERE email = ?", array($email))->row_array();
-		$encrypted_password = md5($time['created_at'].$password);
-		return $this->db->query("SELECT * FROM users WHERE email = ? and password = ?", array($email, $encrypted_password))->row_array();
+		if($time == null){
+			return null;
+		}
+		else{
+			$encrypted_password = md5($time['created_at'].$password);
+			return $this->db->query("SELECT * FROM users WHERE email = ? and password = ?", array($email, $encrypted_password))->row_array();	
+		}
 	}
 
 	function get_user_by_id($id)

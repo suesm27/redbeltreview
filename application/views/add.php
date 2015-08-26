@@ -27,7 +27,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/main">Home</a></li>
-          <li><a href="/users/logout">Logout</a></li>
+          <li><a href="/users/logoff">Logout</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container -->

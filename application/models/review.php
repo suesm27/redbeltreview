@@ -1,7 +1,7 @@
 <?php 
 class Review extends CI_Model{
 	function get_top_3_book_reviews(){
-		return $this->db->query("select reviews.id, reviews.rating, reviews.review, reviews.created_at, books.id as book_id, books.title as book_title, users.name as user_name from books join reviews on books.id = reviews.book_id join users on reviews.user_id = users.id order by reviews.created_at DESC LIMIT 3;")->result_array();
+		return $this->db->query("select reviews.user_id, reviews.id, reviews.rating, reviews.review, reviews.created_at, books.id as book_id, books.title as book_title, users.name as user_name from books join reviews on books.id = reviews.book_id join users on reviews.user_id = users.id order by reviews.created_at DESC LIMIT 3;")->result_array();
 	}
 
 	function add_review($review, $rating, $book_id, $user_id){
